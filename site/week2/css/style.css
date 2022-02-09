@@ -236,4 +236,17 @@ p {
     .menu-item-mobile#sushi {
         background-color: #E5D198;
     }
+
+    .menu-item#chicken-mobile {
+        background-color: #D59898;
+    }
+    
+    .menu-item#beef-mobile {
+        background-color: #C04543;
+        color: white;
+    }
+    
+    .menu-item#sushi-mobile {
+        background-color: #E5D198;
+    }
 }
