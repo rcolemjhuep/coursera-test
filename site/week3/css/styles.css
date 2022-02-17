@@ -67,5 +67,10 @@ body {
 }
 
 .menu-item-box a {
-    text-decoration: None;
+    color: darkslateblue;
+}
+
+.menu-item-box a:hover {
+    color: rgb(116, 106, 182);
+    text-decoration-line: underline;
 }
