@@ -7,6 +7,8 @@
     * https://rcolemjhuep.github.io/jhu-frontend-coursera/site/week2
 * Assignment 3
     * https://rcolemjhuep.github.io/jhu-frontend-coursera/site/week3
+* Assignment 4
+    * https://rcolemjhuep.github.io/jhu-frontend-coursera/site/mod4
  
     
 # Details
