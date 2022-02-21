@@ -62,4 +62,40 @@ WARNING!!! WARNING!!!
       helloSpeaker.speak(names[i]);
     }
   }
+
+  // Array Map section
+  function chooseGreeting(name) {
+    var firstLetter = name[0].toLowerCase();
+    if (firstLetter == "j") {
+      return byeSpeaker.speakSimple(name);
+    } else {
+      return helloSpeaker.speakSimple(name);
+    }
+  };
+
+  var greetingsArray = names.map(chooseGreeting);
+  for (i = 0; i < greetingsArray.length; i++) {
+    console.log(greetingsArray[i]);
+  }
+
+  // Array reduce section
+  function chooseGreetingReduce(seperatedList, name) {
+    var firstLetter = name[0].toLowerCase();
+    if (firstLetter == "j") {
+      seperatedList.bye.push(byeSpeaker.speakSimple(name));
+    } else {
+      seperatedList.hello.push(helloSpeaker.speakSimple(name));
+    }
+    return seperatedList;
+  }
+  var initialValue = { hello: [], bye: [] };
+  var reducedGreetingArray = names.reduce(chooseGreetingReduce, initialValue)
+
+  for (i = 0; i < reducedGreetingArray.hello.length; i++) {
+    console.log(reducedGreetingArray.hello[i]);
+  }
+
+  for (i = 0; i < reducedGreetingArray.bye.length; i++) {
+    console.log(reducedGreetingArray.bye[i]);
+  }
 })(window.helloSpeaker, window.byeSpeaker);
