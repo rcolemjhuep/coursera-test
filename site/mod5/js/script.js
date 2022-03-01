@@ -157,8 +157,8 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
       buildAndShowMenuItemsHTML);
   };
 
-  function randomNum0to5() {
-    return Math.floor(Math.random() * 6);
+  function randomNum1to5() {
+    return Math.floor(1 + Math.random() * 5);
   }
 
   dc.loadMenuAbout = function () {
@@ -167,7 +167,7 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
       aboutMenuHTML,
       function (aboutHTML) {
         var spanList = aboutHTML.split("\n"); //split HTML into list of spans
-        var numStars = randomNum0to5();
+        var numStars = randomNum1to5();
         for (var i = 0; i < spanList.length; i++) {
           var starType = (i < numStars) ? "fas fa-star" : "far fa-star";
           spanList[i] = insertProperty(spanList[i], "star", starType);
