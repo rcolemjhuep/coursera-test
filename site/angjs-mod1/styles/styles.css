@@ -1,0 +1,15 @@
+.goodInput {
+    color: green;
+}
+
+.goodBorder {
+    border-color: green;
+}
+
+.badInput {
+    color: red;
+}
+
+.badBorder {
+    border-color:red;
+}
