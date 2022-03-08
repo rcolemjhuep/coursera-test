@@ -1,6 +1,6 @@
 # JHU Frontend Coursera Pages
 
-# Weeks
+# Intro Weeks
 * Week 1 
     * https://rcolemjhuep.github.io/jhu-frontend-coursera/site/week1
 * Assignment 2
@@ -11,6 +11,11 @@
     * https://rcolemjhuep.github.io/jhu-frontend-coursera/site/mod4
 * Assignment 5
     * https://rcolemjhuep.github.io/jhu-frontend-coursera/site/mod5
+
+# Angular JS Weeks
+* Assignment 1
+    * https://rcolemjhuep.github.io/jhu-frontend-coursera/site/angjs-mod1
+ 
  
     
 # Details
