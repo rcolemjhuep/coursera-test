@@ -3,52 +3,54 @@
     angular.module('ShoppingListCheckOff', [])
         .controller("ToBuyController", ToBuyController)
         .controller("AlreadyBoughtController", AlreadyBoughtController)
-    function ToBuyController($scope) {
-        $scope.checkIfTooMuch = function () {
-            var foodList = $scope.foodList;
+        .service("ShoppingListCheckOffService", ShoppingListCheckOffService);
 
-            if (foodList === undefined || foodList == "") {
-                $scope.output = "Please enter data first";
-                $scope.outputClassText = "badInput";
-                $scope.outputClassBorder = "badBorder";
-                return;
-            }
+    function ShoppingListCheckOffService() {
+        var toBuyItems = [{ name: "Cookies", amount: 10 }, { name: "Soda", amount: 5 }];
+        var holdingItems = [];
 
-            var foodArray = foodList.split(",");
-            var counter = 0;
-            foodArray.forEach(function (element) {
-                if (element.trim() != "") {
-                    counter++;
-                }
-            })
-            $scope.output = (counter < 4) ? "Enjoy!" : "Too Much!";
-            $scope.outputClassText = "goodInput";
-            $scope.outputClassBorder = "goodBorder";
-        };
+        this.getToBuyItems = function () {
+            return toBuyItems;
+        }
+
+
+        this.buyItem = function (index) {
+            var boughtItem = toBuyItems.splice(index, 1)[0];
+            holdingItems.push(boughtItem);
+        }
+        this.getHoldingItems = function () {
+            return holdingItems;
+        }
+
+        this.toBuyItemsIsEmpty = function () {
+            return toBuyItems.length == 0;
+        }
+
+        this.holdingItemsIsEmpty = function () {
+            return holdingItems.length == 0;
+        }
     }
-    ToBuyController.$inject = ['$scope'];
-    function AlreadyBoughtController($scope) {
-        $scope.checkIfTooMuch = function () {
-            var foodList = $scope.foodList;
 
-            if (foodList === undefined || foodList == "") {
-                $scope.output = "Please enter data first";
-                $scope.outputClassText = "badInput";
-                $scope.outputClassBorder = "badBorder";
-                return;
-            }
+    ToBuyController.$inject = ['ShoppingListCheckOffService'];
+    function ToBuyController(ShoppingListCheckOffService) {
+        this.toBuyList = ShoppingListCheckOffService.getToBuyItems();
+        this.buyItem = function (index) {
+            ShoppingListCheckOffService.buyItem(index);
+            // console.log(this.buyListIsEmpty())
+        }
 
-            var foodArray = foodList.split(",");
-            var counter = 0;
-            foodArray.forEach(function (element) {
-                if (element.trim() != "") {
-                    counter++;
-                }
-            })
-            $scope.output = (counter < 4) ? "Enjoy!" : "Too Much!";
-            $scope.outputClassText = "goodInput";
-            $scope.outputClassBorder = "goodBorder";
-        };
+        this.buyListIsEmpty = function () {
+            return ShoppingListCheckOffService.toBuyItemsIsEmpty();
+        }
+
     }
-    AlreadyBoughtController.$inject = ['$scope'];
+
+    AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
+    function AlreadyBoughtController(ShoppingListCheckOffService) {
+        this.holdingItemsList = ShoppingListCheckOffService.getHoldingItems();
+        this.holdingItemsListIsEmpty = function () {
+            return ShoppingListCheckOffService.holdingItemsIsEmpty();
+        }
+    }
+
 })();
