@@ -7,9 +7,9 @@
 
     var initialList = [
         { name: "Cookies", amount: 10, pricePerItem: 0.5 },
-        { name: "Soda", amount: 5, pricePerItem: 1.0 },
+        { name: "Sodas", amount: 5, pricePerItem: 1.0 },
         { name: "Chips", amount: 6, pricePerItem: 0.75 },
-        { name: "Gulab Jamons", amount: 100, pricePerItem: 0.35 },
+        { name: "Gulab Jamuns", amount: 100, pricePerItem: 0.35 },
         { name: "Sandwiches", amount: 3, pricePerItem: 3.0 }]
 
     function ShoppingListCheckOffService() {
