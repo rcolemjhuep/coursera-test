@@ -5,14 +5,15 @@
         .controller("AlreadyBoughtController", AlreadyBoughtController)
         .service("ShoppingListCheckOffService", ShoppingListCheckOffService);
 
-    var initialList = [
-        { name: "Cookies", amount: 10, pricePerItem: 0.5 },
-        { name: "Sodas", amount: 5, pricePerItem: 1.0 },
-        { name: "Chips", amount: 6, pricePerItem: 0.75 },
-        { name: "Gulab Jamuns", amount: 100, pricePerItem: 0.35 },
-        { name: "Sandwiches", amount: 3, pricePerItem: 3.0 }]
+
 
     function ShoppingListCheckOffService() {
+        var initialList = [
+            { name: "Cookies", quantity: 10, pricePerItem: 0.5 },
+            { name: "Sodas", quantity: 5, pricePerItem: 1.0 },
+            { name: "Chips", quantity: 6, pricePerItem: 0.75 },
+            { name: "Gulab Jamuns", quantity: 100, pricePerItem: 0.35 },
+            { name: "Sandwiches", quantity: 3, pricePerItem: 3.0 }]
         var toBuyItems = initialList;
         var holdingItems = [];
 
@@ -42,8 +43,10 @@
     function ToBuyController(ShoppingListCheckOffService) {
         this.toBuyList = ShoppingListCheckOffService.getToBuyItems();
         this.buyItem = function (index) {
+            // Just check to see if there is a real number here first, less of head ache later
+            if (isNaN(ShoppingListCheckOffService.getToBuyItems()[index].quantity)) { return }
+
             ShoppingListCheckOffService.buyItem(index);
-            // console.log(this.buyListIsEmpty())
         }
 
         this.buyListIsEmpty = function () {
