@@ -3,9 +3,15 @@
     angular.module('ShoppingListCheckOff', [])
         .controller("ToBuyController", ToBuyController)
         .controller("AlreadyBoughtController", AlreadyBoughtController)
-        .service("ShoppingListCheckOffService", ShoppingListCheckOffService);
+        .service("ShoppingListCheckOffService", ShoppingListCheckOffService)
+        .filter('customCurrency', CustomCurrencyFilterFactory);
 
-
+    function CustomCurrencyFilterFactory() {
+        return function (input) {
+            input = input || 0.0;
+            return "$$$" + input.toFixed(2);
+        };
+    }
 
     function ShoppingListCheckOffService() {
         var initialList = [
@@ -60,6 +66,10 @@
         this.holdingItemsList = ShoppingListCheckOffService.getHoldingItems();
         this.holdingItemsListIsEmpty = function () {
             return ShoppingListCheckOffService.holdingItemsIsEmpty();
+        }
+
+        this.calculateTotal = function (idx) {
+            return this.holdingItemsList[idx].pricePerItem * this.holdingItemsList[idx].quantity;
         }
     }
 

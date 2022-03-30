@@ -46,7 +46,8 @@
       <div ng-controller="ToBuyController as ToBuyCtrl" class="col-md-6">
         <h2>To Buy:</h2>
         <ul>
-          <li ng-repeat="item in ToBuyCtrl.toBuyList">Buy {{ item.quantity? item.quantity : 0 }} {{ item.name }}
+          <li ng-repeat="item in ToBuyCtrl.toBuyList">Buy {{ item.quantity? item.quantity : 0 }} {{ item.name }} for {{
+            item.pricePerItem | customCurrency }} each
             <button ng-click="ToBuyCtrl.buyItem($index)" class="btn btn-default">
               <span class="glyphicon glyphicon-ok"></span>
               Bought
@@ -62,7 +63,7 @@
         <h2>Already Bought:</h2>
         <ul>
           <li ng-repeat="item in AlreadyBoughtCtrl.holdingItemsList">Bought {{item.quantity? item.quantity : 0}}
-            {{item.name}}</li>
+            of {{item.name}} for total price of {{AlreadyBoughtCtrl.calculateTotal($index) | customCurrency }}</li>
         </ul>
         <div ng-if="AlreadyBoughtCtrl.holdingItemsListIsEmpty()" class="emptyMessage">Nothing bought yet.</div>
       </div>
