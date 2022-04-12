@@ -23,8 +23,13 @@
     }
 
 
-    // Empty
+
     function NarrowItDownDirectiveController() {
+        var directiveController = this
+
+        directiveController.foundListEmpty = function () {
+            return (directiveController.found.length == 0)
+        }
     }
 
     NarrowItDownController.$inject = ['MenuSearchService'];
@@ -34,11 +39,8 @@
         // Description of item we are looking for
         narrowList.searchTerm = "";
 
-        // Initially grab all menu items possible
-        var promise = MenuSearchService.getMenuItems()
-        promise.then(function (items) {
-            narrowList.found = items;
-        })
+        // Initially empty list
+        narrowList.found = []
 
 
         // Remove item by index
@@ -49,16 +51,14 @@
         // Search bar function for finding our search term
         narrowList.narrowFoundList = function () {
 
-            // Don't do anything on empty search box
             if (narrowList.searchTerm === undefined || narrowList.searchTerm == "") {
-                MenuSearchService.getMenuItems().then(function (items) {
+                narrowList.found = []
+            }
+            else {
+                MenuSearchService.getMatchedMenuItems(narrowList.searchTerm).then(function (items) {
                     narrowList.found = items;
                 });
             }
-
-            MenuSearchService.getMatchedMenuItems(narrowList.searchTerm).then(function (items) {
-                narrowList.found = items;
-            });
         }
     }
 
