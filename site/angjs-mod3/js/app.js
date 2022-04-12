@@ -72,6 +72,5 @@
                 return result.data.menu_items
             });
         }
-
     }
 })();
