@@ -42,15 +42,32 @@
     NarrowItDownController.$inject = ['MenuSearchService'];
     function NarrowItDownController(MenuSearchService) {
         var narrowList = this;
-        var promise = MenuSearchService.getMenuItems()
 
+        narrowList.searchTerm = "";
+
+        var promise = MenuSearchService.getMenuItems()
         promise.then(function (items) {
             narrowList.found = items
         })
 
+
         narrowList.removeItem = function (itemIndex) {
             narrowList.found.splice(itemIndex, 1);
         };
+
+        narrowList.narrowFoundList = function () {
+
+            // Don't do anything on empty search box
+            if (narrowList.searchTerm === undefined || narrowList.searchTerm == "") {
+                MenuSearchService.getMenuItems().then(function (items) {
+                    narrowList.found = items
+                })
+            };
+
+            MenuSearchService.getMatchedMenuItems(narrowList.searchTerm).then(function (items) {
+                narrowList.found = items
+            })
+        }
 
 
     }
@@ -61,7 +78,6 @@
 
         service.getMenuItems = function () {
             return $http.get('https://davids-restaurant.herokuapp.com/menu_items.json').then(function (result) {
-                // process result and only keep items that match
                 return result.data.menu_items
             });
         }
@@ -69,7 +85,12 @@
         service.getMatchedMenuItems = function (searchTerm) {
             return $http.get('https://davids-restaurant.herokuapp.com/menu_items.json').then(function (result) {
                 // process result and only keep items that match
-                return result.data.menu_items
+                return result.data.menu_items.filter(function (item) {
+                    var lowerDescription = item.description.toLowerCase()
+                    var lowerName = item.name.toLowerCase()
+                    var lowerSearch = searchTerm.toLowerCase()
+                    return lowerDescription.includes(lowerSearch) || lowerName.includes(lowerSearch)
+                })
             });
         }
     }

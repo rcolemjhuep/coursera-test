@@ -3,7 +3,7 @@
 <h1> Found List </h1>
 <ol>
     <li ng-repeat="item in list.found">
-        {{ item.name }}
+        ({{ item.short_name }}) {{ item.name }}
         <button ng-click="list.onRemove({index: $index});">Don't want this one!</button>
     </li>
 </ol>
