@@ -22,11 +22,11 @@
       // Categories list page
       .state('categories', {
         url: '/categories',
-        templateUrl: 'src/menuapp/templates/categories.template.html',
+        templateUrl: 'src/menuapp/templates/category-list.template.html',
         controller: 'CategoryListController as catList',
         resolve: {
           items: ['MenuDataService', function (MenuDataService) {
-            return MenuDataService.getCategories()
+            return MenuDataService.getAllCategories()
           }]
         }
       })
