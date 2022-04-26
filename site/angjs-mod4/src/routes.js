@@ -31,13 +31,16 @@
         }
       })
 
-      // Item detail
-      .state('mainList.itemDetail', {
-        // url: '/item-detail/{itemId}',
-        templateUrl: 'src/menuapp/templates/item-detail.template.html',
-        controller: 'ItemDetailController as itemDetail',
-        params: {
-          itemId: null
+      // Category Item List 
+      .state('items', {
+        url: '/items/{categoryShortName}',
+        templateUrl: 'src/menuapp/templates/category-items.template.html',
+        controller: 'ItemListController as itemList',
+        resolve: {
+          items: ['MenuDataService', '$stateParams', function (MenuDataService, $stateParams) {
+            return MenuDataService.getItemsForCategory($stateParams.categoryShortName)
+          }]
+
         }
       });
 
