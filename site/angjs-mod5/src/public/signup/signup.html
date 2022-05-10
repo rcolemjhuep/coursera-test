@@ -1,18 +1,24 @@
 <div class="container">
-  <legend style="color: white">Sign Up For Our News Letter</legend>
-  <form name="signUpForm" novalidate>
-    <input style="color: black" type="text" name="firstName" placeholder="First Name"
-      ng-model="signupCtrl.user.firstName"> {{ signupCtrl.user.firstName }} <br>
-    <input style="color: black" type="text" name="lastName" placeholder="Last Name" ng-model="signupCtrl.user.lastName">
-    {{ signupCtrl.user.lastName }} <br>
-    <input style="color: black" type="text" name="email" placeholder="Email Address" ng-model="signupCtrl.user.email">
-    {{ signupCtrl.user.email }}<br>
-    <input style="color: black" type="text" name="phoneNumber" placeholder="Phone Number"
-      ng-model="signupCtrl.user.phoneNumber">
-    {{ signupCtrl.user.phoneNumber }}<br>
-    <input style="color: black" type="text" name="favoriteDish" placeholder="Favorite Dish Menu #"
-      ng-model="signupCtrl.user.favoriteDish">
-    {{ signupCtrl.user.favoriteDish }}<br>
-    <button ng-click="signupCtrl.submit()" style="color: black">Submit</button>
-  </form>
+  <fieldset>
+    <legend style="color: white">Sign Up For Our News Letter</legend>
+    <form name="signUpForm" novalidate>
+      <input required style="color: black" type="text" name="firstName" placeholder="First Name"
+        ng-model="signupCtrl.user.firstName"> {{ signupCtrl.user.firstName }} <br>
+      <input required style="color: black" type="text" name="lastName" placeholder="Last Name"
+        ng-model="signupCtrl.user.lastName">
+      {{ signupCtrl.user.lastName }} <br>
+      <input required style="color: black" type="email" name="email" placeholder="Email Address"
+        ng-model="signupCtrl.user.email">
+      {{ signupCtrl.user.email }}<br>
+      <input required style="color: black" type="text" name="phoneNumber" placeholder="Phone Number"
+        ng-model="signupCtrl.user.phoneNumber" pattern="\d{3}-\d{3}-\d{4}">
+      {{ signupCtrl.user.phoneNumber }}<br>
+      <input required style="color: black" type="text" name="favoriteDish" placeholder="Favorite Dish Menu #"
+        ng-model="signupCtrl.user.favoriteDish" signup ng-model-options="{ updateOn: 'blur' }">
+      {{ signupCtrl.user.favoriteDish }} <span ng-if="signUpForm.favoriteDish.$pending">Checking
+        Dish...</span><span ng-if="signUpForm.favoriteDish.$invalid && signUpForm.favoriteDish.$touched">Dish Doesn't
+        Exist</span><br>
+      <button ng-disabled="signUpForm.$invalid" ng-click="signupCtrl.submit()" style="color: black">Submit</button>
+    </form>
+  </fieldset>
 </div>
