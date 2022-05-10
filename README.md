@@ -21,6 +21,8 @@
     * https://rcolemjhuep.github.io/jhu-frontend-coursera/site/angjs-mod3
 * Assignment 4
     * https://rcolemjhuep.github.io/jhu-frontend-coursera/site/angjs-mod4
+* Assignment 5
+    * https://rcolemjhuep.github.io/jhu-frontend-coursera/site/angjs-mod5
 
  
  
