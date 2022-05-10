@@ -23,6 +23,7 @@
     * https://rcolemjhuep.github.io/jhu-frontend-coursera/site/angjs-mod4
 * Assignment 5
     * https://rcolemjhuep.github.io/jhu-frontend-coursera/site/angjs-mod5
+    * https://rcolemjhuep.github.io/jhu-frontend-coursera/site/angjs-mod5/SpecRunner.html
 
  
  
