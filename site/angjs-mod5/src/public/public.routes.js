@@ -38,12 +38,12 @@
       })
       .state('public.myinfo', {
         url: '/myinfo',
-        templateUrl: 'src/public/menu/menu.html',
-        controller: 'MenuController',
+        templateUrl: 'src/public/myinfo/myinfo.html',
+        controller: 'MyInfoController',
         controllerAs: 'myinfoCtrl',
         resolve: {
-          menuCategories: ['MenuService', function (MenuService) {
-            return MenuService.getCategories();
+          menuItem: ['SignUpService', function (SignUpService) {
+            return SignUpService.getUserFavoriteDish();
           }]
         }
       })

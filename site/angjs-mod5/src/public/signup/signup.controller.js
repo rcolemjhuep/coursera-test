@@ -8,14 +8,10 @@
   function SignUpController(SignUpService) {
     var $ctrl = this;
 
+    $ctrl.user = null;
+
     $ctrl.submit = function () {
-      SignUpService.addUser({
-        'firstName': $ctrl.user.firstName,
-        'lastName': $ctrl.user.lastName,
-        'email': $ctrl.user.email,
-        'phoneNumber': $ctrl.user.phoneNumber,
-        'favoriteDish': $ctrl.user.favoriteDish,
-      });
+      SignUpService.setUser($ctrl.user);
     }
   }
 })();

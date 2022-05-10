@@ -5,25 +5,34 @@
     .service('SignUpService', SignUpService);
 
 
-  SignUpService.$inject = ['$http', 'ApiPath'];
-  function SignUpService($http, ApiPath) {
+  SignUpService.$inject = ['$http', 'ApiPath', '$q'];
+  function SignUpService($http, ApiPath, $q) {
     var service = this;
 
-    service.users = []
+    service.user = null;
 
-    service.addUser = function (user) {
-      service.users.push(user)
+    service.setUser = function (user) {
+      service.user = user
     }
 
-    service.getUsers = function () {
-      return service.users
-    }
 
-    // service.getCategories = function () {
-    //   return $http.get(ApiPath + '/categories.json').then(function (response) {
-    //     return response.data;
-    //   });
-    // };
+    service.getUserFavoriteDish = function () {
+
+      console.log(service.user)
+      if (service.user == null) {
+        return $q.resolve(null)
+      }
+
+      var url = `${ApiPath}/menu_items/${service.user.favoriteDish}.json`
+      console.log(url)
+      return $http.get(url).then(function (response) {
+        return response.data;
+      });
+    };
+
+    service.getUser = function () {
+      return service.user
+    }
 
 
     // service.getMenuItems = function (category) {
