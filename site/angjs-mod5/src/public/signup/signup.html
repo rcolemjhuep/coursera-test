@@ -1,0 +1,15 @@
+<div class="container">
+  <legend style="color: white">Sign Up For Our News Letter</legend>
+  <form name="signUpForm" novalidate>
+    <input style="color: black" type="text" name="firstName" placeholder="First Name"
+      ng-model="signupCtrl.user.firstName"> {{ signupCtrl.user.firstName }} <br>
+    <input style="color: black" type="text" name="lastName" placeholder="Last Name" ng-model="signupCtrl.user.lastName">
+    {{ signupCtrl.user.lastName }} <br>
+    <input style="color: black" type="text" name="email" placeholder="Email Address" ng-model="signupCtrl.user.email">
+    {{ signupCtrl.user.email }}<br>
+    <input style="color: black" type="text" name="phoneNumber" placeholder="Phone Number"
+      ng-model="signupCtrl.user.phoneNumber">
+    {{ signupCtrl.user.phoneNumber }}<br>
+    <button style="color: black">Submit</button>
+  </form>
+</div>
