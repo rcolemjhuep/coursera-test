@@ -18,9 +18,10 @@
       <input required style="color: black" type="text" name="favoriteDish" placeholder="Favorite Dish Menu #"
         ng-model="signupCtrl.user.favoriteDish" signup ng-model-options="{ updateOn: 'blur' }">
       {{ signupCtrl.user.favoriteDish }} <span ng-if="signUpForm.favoriteDish.$pending">Checking
-        Dish...</span><span ng-if="signUpForm.favoriteDish.$invalid && signUpForm.favoriteDish.$touched">Dish Doesn't
-        Exist</span><br>
-      <button ng-disabled="signUpForm.$invalid" ng-click="signupCtrl.submit()" style="color: black">Submit</button>
+        Dish...</span><span ng-if="signUpForm.favoriteDish.$invalid && signUpForm.favoriteDish.$touched">No Such Menu
+        Number Exists...</span><br>
+      <button ng-disabled="signUpForm.$invalid" ng-click="signupCtrl.submit()" style="color: black">Submit</button><br>
+      <span ng-if="signUpForm.$submitted">Your Information Has Been Saved...</span>
     </form>
   </fieldset>
 </div>
