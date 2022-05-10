@@ -10,6 +10,9 @@
     <input style="color: black" type="text" name="phoneNumber" placeholder="Phone Number"
       ng-model="signupCtrl.user.phoneNumber">
     {{ signupCtrl.user.phoneNumber }}<br>
-    <button style="color: black">Submit</button>
+    <input style="color: black" type="text" name="favoriteDish" placeholder="Favorite Dish Menu #"
+      ng-model="signupCtrl.user.favoriteDish">
+    {{ signupCtrl.user.favoriteDish }}<br>
+    <button ng-click="signupCtrl.submit()" style="color: black">Submit</button>
   </form>
 </div>
